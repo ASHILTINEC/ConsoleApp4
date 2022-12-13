@@ -4,31 +4,31 @@ namespace ConsoleApp4
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            int x;
-            string fizz,buzz;
-            fizz = "Fizz";
-            buzz = "Buzz";
             Console.WriteLine("FizzBuzzGame");
             Console.WriteLine("Enter number (0-100)");
-            x = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < x; i++)
+            const string fizz = "Fizz";
+            const string buzz = "Buzz";
+            if (!int.TryParse(Console.ReadLine(), out var x)) x = 100;
+            for (var i = 1; i <= x; i++)
             {
                 if (i % 3 == 0)
                 {
-                    Console.WriteLine(fizz);
-                }
-               else if (i % 5 == 0)
-                {
-                    Console.WriteLine(buzz);
-                }
-               else if (i % 3 == 15)
-                {
-                    Console.WriteLine(fizz + buzz);
+                    Console.Write(fizz);
                 }
 
-                Console.WriteLine(i);
+                if (i % 5 == 0)
+                {
+                    Console.Write(buzz);
+                }
+                
+                if (i % 3 != 0 && i % 5 != 0)
+                {
+                    Console.Write(i);
+                }
+
+                Console.WriteLine();
             }
         }
     }
